@@ -1,0 +1,45 @@
+CONNECTION ORIENTED RPC PROGRAM - CLIENT PART
+OVERVIEW:  In this program a RPC client has been designed that sends a request to the RPC server requesting to fetch a file that is present in the server. RPC helps to locate another computer on a network without having to understand the network’s details. As it is RPC, Now the client would request for the specific file. The server would search for the file and if found it will return the file to the client. 
+MAIN
+Client receives three arguments one is the default client argument, next is the host ip address or the host name and the third is the filename that must be retrieved from the server.
+By using the host ip and file name as the input, the main function calls the file_server_1 function that has been created by the generator and receives the file from the server.
+The client is connected to the server using the clnt_create() function, which receives 4 parameters. Host name, program name, version name and the protocol name. In this program the protocol name is set as “tcp”.
+The file that is received by the client from the server is then stored in a new file name clientfile.txt.
+If the file intended by the client is not present in the server, then the client displays the error message that is passed by the server to the client.
+
+OUTPUT & COMMANDS OF EXECUTION
+Arguments to be given while executing the program.
+Positive case
+Test Case 1: Requesting for large file.
+Command Line for .x file
+		rpc -a -C tcp.x
+Command Line on the server
+make -f Makefile.tcp
+sudo ./tcp_server
+Command Line on the client 
+./tcp_client localhost large.txt
+
+
+
+
+Test Case 2: Requesting for small file
+Command Line for .x file
+		rpc -a -C tcp.x
+Command Line on the server
+make -f Makefile.tcp
+sudo ./tcp_server
+Command Line on the client 
+./tcp_client localhost small.txt
+
+
+
+Negative Case:
+Test Case 3: requesting for a file that is not present with the server.
+Command Line for .x file
+		rpc -a -C tcp.x
+Command Line on the server
+Make -f Makefile.tcp
+sudo ./tcp_server
+Command Line on the client 
+./tcp_client localhost error.txt
+
